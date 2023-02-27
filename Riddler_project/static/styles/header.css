@@ -1,0 +1,37 @@
+header{
+    height: 6.125em;
+}
+.navbar{
+    border-bottom: 8px green solid;
+}
+.navbar-brand span{
+    font-size: 1rem;
+    line-height: 1.5;
+}
+.navbar .navbar-text a {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(202, 206, 221, 0.8);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.navbar-text a:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: green;
+    content: "";
+    transition: width 0.3s ease-out;
+}
+
+.navbar-text a:hover:after,
+.navbar-text a:focus:after {
+    width: 100%;
+}
+.logo{
+    width: 2.5rem;
+    height: 2.5rem;
+}

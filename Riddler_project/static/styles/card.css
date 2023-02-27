@@ -1,0 +1,10 @@
+.border-radius-10{
+    border-radius: 10px;
+}
+.opacity-08{
+    opacity: 0.8;
+}
+.scroll{
+    overflow-y: scroll;
+    height: 24em;
+}

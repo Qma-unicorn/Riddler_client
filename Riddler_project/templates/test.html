@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+{% block content %}
+<div class="container" id="questions">
+    <form class="h-main d-grid align-content-beetwen" method="post" action="{% url 'result' %}" ref = "form" name="form">
+    {% csrf_token %}
+    <div class="mt-2">
+        <div class="row mt-5 mb-5 justify-content-between">
+               <div class="col-11 row">
+                   <div class="col-8 col-sm-4 col-md-3 input-group">
+                       <input class="form-control" type="text" placeholder="ФИО" name="name" required>
+                   </div>
+                   <div class="col-8 col-sm-4 col-md-3 input-group">
+                        <input class="form-control" type="text"placeholder="Организация" name="job" required>
+                   </div>
+                   <div class="col-8 col-sm-4 col-md-3 input-group">
+                        <input class="form-control" type="text"placeholder="Должность" name="spec" required>
+                   </div>
+               </div>
+
+              <select class="form-select col-1" id="" v-model="index">
+                  <option v-for="i of {{ length }}" v-bind:value="i - 1">
+                      {% verbatim %}{{i}}{% endverbatim %}
+                  </option>
+              </select>
+        </div>
+    </div>
+        <input name="quiz_id" value="{{ quiz_id }}" hidden>
+            {% for index, QA in data.items %}
+                <div class="mb-5" v-bind:class="{ 'd-none': index != {{index}} }">
+                    {% for question,answers in QA.items %}
+                        <p class="h3 mb-4">{{ question }}</p>
+                        {% for answer in answers %}
+                            <div class="form-check mb-5 h4">
+                                <input class="form-check-input" required type="radio" name = "{{ question.id }}" value="{{ answer.id }}">
+                                <label class="form-check-label" for="{{ question.id }}">{{ answer.content }}</label>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+    <div class="mb-5">
+            <div class="mb-4">
+                <a href="/tests/"  v-if="index == 0">
+                    <button class="btn btn-lg btn-secondary" type="button">Домой</button>
+                </a>
+                <button class="btn btn-lg btn-danger" v-else  @click="index--" type="button">Назад</button>
+                <button class="btn btn-lg ml-2 btn-success" v-if="index < {{ length }} - 1" @click="index++" type="button">Вперед</button>
+                <button class="btn btn-lg ml-2 btn-success" v-else type="submit">Завершить</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}
+{% block vue %}
+    <script src="{% static '/jde/vue.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static '/jde/axios.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static '/vue/testing.js' %}"></script>
+{% endblock %}

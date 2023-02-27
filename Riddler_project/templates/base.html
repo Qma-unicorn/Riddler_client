@@ -1,0 +1,53 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="{% static '/images/base/logo.png' %}">
+    {% block css %}
+    {% endblock %}
+    <title>Портал Suhbat - для проверки компетентности</title>
+
+    <link rel="stylesheet" href="{% static '/jde/bootstrap.min.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/jde/bootstrap4_grid.css' %}" crossorigin="anonymous">
+    <script src="{% static '/jde/bootsrap.min.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static '/jde/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static '/styles/base.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/header.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/fonts.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/main.css' %}">
+</head>
+<body>
+<section class="intro">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0B1126;">
+          <div class="container">
+            <a class="navbar-brand open-sans" href="/">
+                <img src="{% static '/images/base/logo.png' %}" class="logo">
+                <span><b>SUHBAT</b></span>
+            </a>
+          <span class="navbar-text">
+              <a class="nav-link raleway desk" href="https://synaq.sts.kz/">
+                вернуться в интернет-портал SYNAQ
+              </a>
+              <a class="nav-link raleway mobil" href="https://synaq.sts.kz/">
+                вернуться SYNAQ
+              </a>
+          </span>
+          </div>
+        </nav>
+    </header>
+<div class="postion-stiky">
+    {% block content %}
+    {% endblock %}
+    {% block vue %}
+    {% endblock %}
+</div>
+</section>
+</body>
+</html>

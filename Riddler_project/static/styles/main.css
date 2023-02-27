@@ -1,0 +1,11 @@
+.h-main{
+    height: calc(100vh - 98px);
+}
+.align-content-beetwen{
+    align-content: space-between;
+}
+@media screen and (max-width: 758px) {
+    .input-group{
+        margin-top: 0.5rem;
+    }
+}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+{% block content %}
+    {% verbatim %}
+    <div class="container" id="tests">
+        <div class="h-main d-grid">
+            <div class="d-grid align-content-beetwen">
+                <div class="mt-5">
+                    <div class="mt-5">
+                        <label for="selectCh">Выберите вид испытания</label>
+                        <select name="selectCh" class="form-select" aria-label="Disabled select example" placeholder="Выберите вид испытания" v-model="selected">
+                            <option disabled selected>Выберите вид испытания</option>
+                            <option v-for="quiz of quizes" :value="quiz">{{quiz.name}}</option>
+                        </select>
+                        <div class="mt-5 pt-2 text-justify h5">
+                            <span class="h5" v-if="selected === '' ">Вид испытания не выбран</span>
+                            <span v-else>
+                                <p class="h4">Описание:</p>
+                                <p class="h5 p-2 normal">{{ selected.desc }}</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="mb-5">
+                <form class="mb-5" v-if="selected.desc != undefined" v-bind:action="'/test/' + selected.id">
+                    <button type="submit" class="btn btn-lg btn-success">
+                        Приступить
+                    </button>
+                </form>
+                <form class="mb-5"  v-else>
+                    <button disabled type="submit" class="btn btn-lg btn-danger">
+                        Приступить
+                    </button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endverbatim %}
+{% endblock %}
+{% block vue %}
+    <script src="{% static '/jde/vue.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static '/jde/axios.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static '/vue/select.js' %}"></script>
+{% endblock %}

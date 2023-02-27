@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/styles/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container" id="app">
+        <div class="h-main d-grid">
+            <div class="d-grid align-content-end">
+                <h1 class=" mb-4 text-center open-sans bolder">
+                    МОДУЛЬ ТЕСТИРОВАНИЯ SUHBAT
+                </h1>
+                <div class="text-center">
+                    <a href="tests/" class="btn btn-success pt-3 pb-3 pl-4 pr-4">
+                        ПЕРЕЙТИ
+                    </a>
+                </div>
+            </div>
+            <h5 class="d-grid align-content-end mb-5 raleway text-justify">
+                SUHBAT - интернет портал государственной технической службы, предназначенный для предоставления услуг
+                тестирования технической осведомленности заявителей, в рамках испытаний на соответсвия единым требованиям
+                информационнной безопасности Республики Казахстан.
+            </h5>
+        </div>
+    </div>
+{% endblock %}
+
+
